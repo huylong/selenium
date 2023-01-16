@@ -21,18 +21,18 @@ fi
 # UnInstall Google Chrome
 #============================================
 ls -a | grep "google-chrome-" | grep -v grep | awk '{print $1}' | xargs -r rm
+ls -a | grep "chromedriver_linux64" | grep -v grep | awk '{print $1}' | xargs -r rm
 yum list installed | grep "google-chrome" | grep -v grep | awk '{print $1}' | xargs -r yum -y remove
 
 #============================================
 # Install Google Chrome
 #============================================
-wget --no-check-certificate --no-verbose https://git.ntq.solutions/huy.pham4/selenium/-/raw/master/install/google-chrome-stable-108.0.5359.124-1.x86_64.rpm
+wget --no-check-certificate --no-verbose http://dist.control.lth.se/public/CentOS-7/x86_64/google.x86_64/google-chrome-stable-108.0.5359.124-1.x86_64.rpm
 yum -y install google-chrome-stable-108.0.5359.124-1.x86_64.rpm
 #============================================
 # Install Google Chromedriver
 #============================================
-ls -a | grep "chromedriver_linux64" | grep -v grep | awk '{print $1}' | xargs -r rm
-wget https://git.ntq.solutions/huy.pham4/selenium/-/raw/master/install/chromedriver_linux64.zip
+wget https://chromedriver.storage.googleapis.com/108.0.5359.71/chromedriver_linux64.zip
 unzip chromedriver_linux64.zip
 mv -f chromedriver /usr/local/bin
 perl -pi -e 's/cdc_/dog_/g' /usr/local/bin/chromedriver
@@ -40,7 +40,7 @@ perl -pi -e 's/cdc_/dog_/g' /usr/local/bin/chromedriver
 # Install Selenium
 #============================================
 rm -rf selenium-server-standalone-3.6.0.jar
-wget https://git.ntq.solutions/huy.pham4/selenium/-/raw/master/install/selenium-server-standalone-3.9.1.jar
+wget https://selenium-release.storage.googleapis.com/3.9/selenium-server-standalone-3.9.1.jar
 mv selenium-server-standalone-3.9.1.jar /usr/local/bin
 #============================================
 
